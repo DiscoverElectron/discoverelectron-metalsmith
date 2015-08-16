@@ -1,0 +1,42 @@
+/*
+ * Colors
+ * -------------------------------------------------- */
+
+:root {
+
+  --black:                     #333333;
+  --grey:                      #575757;
+  --white:                     #F7F7F7;
+
+  --primary-color:             #45828E;
+  --secondary-color:           #A5ECFA;
+  --action-color:              #297F3C;
+
+  --darkest-color:             color(var(--primary-color) s(100%) l(16%));
+  --darker-color:              color(var(--primary-color) s(50%)  l(28%));
+  --medium-color:              color(var(--primary-color)         l(38%));
+  --lighter-color:             color(var(--primary-color) s(50%)  l(60%));
+  --lightest-color:            color(var(--primary-color) s(100%) l(90%));
+
+  --body-background:           var(--white);
+  --body-alt-background:       color(var(--darker-color) l(-5%));
+  --text-color:                var(--darker-color);
+  --text-alt-color:            var(--lightest-color);
+  --head-color:                var(--darkest-color);
+  --head-alt-color:            var(--white);
+  --link-color:                var(--medium-color);
+  --link-hover-color:          var(--lighter-color);
+  --link-alt-color:            var(--lightest-color);
+  --link-alt-hover-color:      var(--white);
+
+  --highlight-color:           var(--darker-color);
+  --highlight-background:      var(--lightest-color);
+
+  --muted-color:               color(var(--border-color) l(92.5%) s(15%));
+  --disabled-color:            var(--grey);
+  --shadow-color:              var(--black);
+
+  --border-color:              var(--darker-color);
+  --border-alt-color:          var(--muted-color);
+
+}

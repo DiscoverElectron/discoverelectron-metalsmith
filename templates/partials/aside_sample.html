@@ -1,0 +1,27 @@
+<section class="aside-sample">
+
+  <h2 class="sample-title">
+    Get Chapters 1 to 3 of <strong>Discover Electron</strong> for Free
+  </h2>
+
+  <div class="split split--two-three">
+    <div>
+      <img class="highlighted" src="/assets/images/sample.png" alt="" />
+    </div>
+
+    <form class="form--compact" action="{{ mailchimp.url }}" method="post" novalidate="novalidate" target="_blank">
+      <p>Get the first three chapters of <strong>Discover Electron</strong> (<em>Introduction</em>, <em>Setting Things Up</em>, <em>Your First App</em>) by joining the email newsletter.</p>
+
+      <div>
+        <label for="EMAIL" class="sr-only">Email:</label>
+        <input type="email" value="" placeholder="Enter your email address&hellip;" name="EMAIL" id="EMAIL" />
+        <input type="hidden" value="{{ link }}" name="ORIGIN" id="ORIGIN" />
+        <input type="hidden" value="aside_excerpt" name="TYPE" id="TYPE" />
+        <button type="submit">Get the free chapters</button>
+      </div>
+
+      <p>I will never send you spam. Unsubscribe at any time.</p>
+    </form>
+  </div>
+
+</section>

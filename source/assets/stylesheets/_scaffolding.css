@@ -1,0 +1,601 @@
+@import "_settings.css";
+
+/*
+ * Scaffolding
+ * -------------------------------------------------- */
+
+
+/* Reset
+ * ------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, hr,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  font-size: 100%;
+  text-decoration: none;
+  vertical-align: baseline;
+  border: 0;
+}
+
+main, article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, output, section {
+  display: block;
+  overflow: hidden;
+}
+
+
+/* Box
+ * ------------------------- */
+
+html,
+input[type="search"] {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+
+/* Type
+ * ------------------------- */
+
+html {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-screen-xs);
+  font-weight: var(--font-weight-body-normal);
+  line-height: var(--line-height-base);
+}
+@media (--screen-sm) {
+  html {
+    font-size: var(--font-size-screen-sm);
+  }
+}
+@media (--screen-md) {
+  html {
+    font-size: var(--font-size-screen-md);
+  }
+}
+@media (--screen-lg) {
+  html {
+    font-size: var(--font-size-screen-lg);
+  }
+}
+@media (--screen-xl) {
+  html {
+    font-size: var(--font-size-screen-xl);
+  }
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+html.wf-loading {
+  font-family: var(--font-family-body-fallback) !important;
+}
+
+html.wf-loading h1,
+html.wf-loading h2,
+html.wf-loading h3,
+html.wf-loading h4,
+html.wf-loading h5,
+html.wf-loading h6 {
+  font-family: var(--font-family-head-fallback) !important;
+}
+
+html.wf-loading code,
+html.wf-loading kbd,
+html.wf-loading pre,
+html.wf-loading samp {
+  font-family: var(--font-family-code-fallback) !important;
+}
+
+
+/* Body
+ * ------------------------- */
+
+body {
+  cursor: default;
+}
+
+
+/* Headings
+ * ------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-head);
+  font-weight: var(--font-weight-head);
+  line-height: var(--line-height-head-base);
+}
+
+h1,
+h2,
+h3 {
+  margin-top: var(--vertical-gap);
+  margin-bottom: calc(var(--vertical-gap) / 2);
+}
+h4,
+h5,
+h6 {
+  margin-top: calc(var(--vertical-gap) / 2);
+  margin-bottom: calc(var(--vertical-gap) / 2);
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+}
+h2 {
+  font-size: var(--font-size-h2);
+  border-bottom: var(--border-width) solid;
+}
+h3 {
+  font-size: var(--font-size-h3);
+}
+h4 {
+  font-size: var(--font-size-h4);
+}
+h5 {
+  font-size: var(--font-size-h5);
+}
+h6 {
+  font-size: var(--font-size-h6);
+}
+
+
+/* Paragraphs
+ * ------------------------- */
+
+p {
+  margin-bottom: calc(var(--vertical-gap) / 2);
+}
+
+
+/* Semantics
+ * ------------------------- */
+
+b,
+strong {
+  font-weight: var(--font-weight-body-bold);
+}
+
+h1 b,
+h2 b,
+h3 b,
+h4 b,
+h5 b,
+h6 b,
+h1 strong,
+h2 strong,
+h3 strong,
+h4 strong,
+h5 strong,
+h6 strong {
+  font-weight: var(--font-weight-head-bold);
+}
+
+i,
+em,
+cite,
+dfn,
+var {
+  font-style: italic;
+}
+
+small {
+  font-size: var(--font-size-small);
+}
+
+del,
+s {
+  text-decoration: line-through;
+}
+ins,
+u {
+  text-decoration: underline;
+}
+
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+sub {
+  bottom: -.25em;
+}
+sup {
+  top: -.5em;
+}
+
+
+/* Blockquotes
+ * ------------------------- */
+
+blockquote {
+  padding: 0 0 0 var(--horizontal-gap);
+  margin: 0 calc(var(--horizontal-gap) * 2) calc(var(--vertical-gap) / 2) 0;
+  border-left: var(--horizontal-gap) solid;
+}
+blockquote p:last-child,
+blockquote ul:last-child,
+blockquote ol:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Horizontal rules
+ * ------------------------- */
+
+hr {
+  height: var(--vertical-gap);
+  text-align: center;
+}
+hr::after {
+  letter-spacing: calc(var(--horizontal-gap) * 2);
+  vertical-align: middle;
+  content: "***";
+}
+
+
+/* Lists
+ * ------------------------- */
+
+/* Unordered and ordered lists */
+ul,
+ol {
+  padding-left: calc(var(--horizontal-gap) * 4);
+  margin-bottom: calc(var(--vertical-gap) / 2);
+  list-style: none;
+}
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+  margin-bottom: 0;
+}
+ul {
+  list-style-type: disc;
+}
+ol {
+  list-style-type: decimal;
+}
+
+/* Definition lists */
+dl {
+  margin-bottom: calc(var(--vertical-gap) / 2);
+}
+dt,
+dd {
+  line-height: var(--line-height-base);
+}
+dt {
+  font-weight: var(--font-weight-body-bold);
+}
+dd {
+  margin-left: calc(var(--horizontal-gap) * 2);
+}
+
+
+/* Media
+ * ------------------------- */
+
+canvas,
+figure,
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto calc(var(--vertical-gap) / 2);
+  overflow: hidden;
+  border: 0;
+}
+
+canvas.bordered,
+figure.bordered,
+img.bordered {
+  border: var(--border-width) solid;
+  border-radius: var(--border-radius-base);
+}
+
+canvas.interactive {
+  touch-action: none;
+}
+
+figure canvas,
+figure img {
+  margin: 0 auto;
+}
+
+p > canvas,
+p > figure,
+p > img {
+  margin: 0 auto calc(var(--vertical-gap) / 5);;
+}
+
+
+/* Table
+ * ------------------------- */
+
+table {
+  width: 100%;
+  margin: 0 0 calc(var(--vertical-gap) / 2);
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 0 var(--horizontal-gap);
+  font-weight: var(--font-weight-body-normal);
+  text-align: center;
+  white-space: nowrap;
+}
+thead {
+  border-bottom: var(--border-width) solid;
+}
+tfoot {
+  border-top: var(--border-width) solid;
+}
+thead th,
+tfoot td {
+  font-weight: var(--font-weight-body-bold);
+  line-height: calc(var(--line-height-computed) * 1.5);
+}
+
+
+/* Links
+ * ------------------------- */
+
+a {
+  border-bottom: 1px dotted;
+}
+
+
+/* Abbreviations
+ * ------------------------- */
+
+abbr[title],
+acronym[title],
+dfn[title] {
+  cursor: help;
+  border-bottom: 1px dotted;
+}
+
+a abbr[title],
+a acronym[title],
+a dfn[title] {
+  cursor: pointer;
+}
+
+
+/*
+ * Code
+ * ------------------------- */
+
+code,
+kbd,
+pre,
+samp {
+  font-family: var(--font-family-code);
+  font-size: var(--font-size-code);
+}
+
+code,
+kbd,
+pre,
+samp {
+  padding: calc(var(--horizontal-gap) / 10) calc(var(--horizontal-gap) / 2);
+  border-radius: var(--border-radius-small);
+}
+
+kbd {
+  border: calc(var(--border-width) / 2) solid;
+}
+
+pre {
+  padding: calc(var(--vertical-gap) / 4) calc(var(--horizontal-gap) * 2);
+  margin-bottom: calc(var(--vertical-gap) / 2);
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
+  border: var(--border-width) solid;
+}
+
+pre code {
+  padding: 0;
+}
+
+
+/* Form
+ * ------------------------- */
+
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  min-height: calc(var(--line-height-computed) * 1.25);
+  padding: calc(var(--horizontal-gap) / 4) var(--horizontal-gap);
+  margin-bottom: calc(var(--vertical-gap) / 3);
+  border: var(--border-width) solid;
+  border-radius: var(--border-radius-small);
+}
+textarea {
+  min-height: auto;
+}
+
+label {
+  display: block;
+  margin-top: calc(var(--vertical-gap) / 2);
+  font-weight: var(--font-weight-body-bold);
+}
+label abbr[title],
+label acronym[title],
+label dfn[title] {
+  border: 0;
+}
+
+button,
+.button {
+  display: inline-block;
+  width: auto;
+  min-height: calc(var(--line-height-computed) * 1.25);
+  padding: calc(var(--horizontal-gap) / 4) var(--horizontal-gap);
+  margin-bottom: calc(var(--vertical-gap) / 3);
+  cursor: pointer;
+  border: calc(var(--border-width) * 2) solid;
+  border-radius: var(--border-radius-base);
+}
+.button {
+  padding: var(--horizontal-gap) calc(var(--horizontal-gap) * 2);
+}
+
+.form--compact button,
+.form--compact .button {
+  display: block;
+  width: 100%;
+}
+.form--compact p {
+  text-align: left;
+}
+.form--compact p:last-child {
+  text-align: center;
+}
+@media (--screen-sm) {
+  .form--compact p {
+    font-size: var(--font-size-small);
+  }
+}
+
+
+/* Tags
+ * ------------------------- */
+
+.tags {
+  padding: 0;
+  font-family: var(--font-family-head);
+  font-weight: var(--font-weight-head);
+  text-align: center;
+}
+.tags-item {
+  display: inline-block;
+  padding: 0 var(--horizontal-gap);
+}
+.tags-item--s {
+  font-size: var(--font-size-h3);
+}
+.tags-item--m {
+  font-size: var(--font-size-h2);
+}
+.tags-item--l {
+  font-size: var(--font-size-h1);
+}
+.tags-link {
+  border: 0;
+}
+
+
+/* Pagination
+ * ------------------------- */
+
+.pagination {
+  padding: 0;
+  margin: var(--vertical-gap) 0;
+  text-align: center;
+}
+.pagination-page {
+  display: inline-block;
+  margin: 0 calc(var(--horizontal-gap) / 2);
+}
+.pagination-page--first .pagination-link::before,
+.pagination-page--prev .pagination-link::before {
+  content: "\2190  ";
+}
+.pagination-page--next .pagination-link::after,
+.pagination-page--last .pagination-link::after {
+  content: "  \2192";
+}
+
+
+/* Misc
+ * ------------------------- */
+
+@media (--screen-sm) {
+  .float--left {
+    float: left;
+    margin: 0 calc(var(--vertical-gap) / 2) calc(var(--horizontal-gap) * 2) 0;
+  }
+  .float--right {
+    float: right;
+    margin: 0 0 calc(var(--horizontal-gap) * 2) calc(var(--vertical-gap) / 2);
+  }
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+
+.overflow {
+  margin-bottom: calc(var(--vertical-gap) / 2);
+  overflow: auto;
+  border: var(--border-width) solid;
+  border-radius: var(--border-radius-small);
+}
+.overflow > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Only display content to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* Use in conjunction with .sr-only to only display content when it's focused */
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+}

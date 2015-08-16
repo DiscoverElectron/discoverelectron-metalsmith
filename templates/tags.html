@@ -1,0 +1,14 @@
+{% extends 'application.html' %}
+
+{% block contents %}
+  <main class="directory">
+    <div class="container">
+      <article class="directory-body">
+        {% include 'partials/directory_header.html' %}
+        {% include 'partials/directory_tags.html' %}
+      </article>
+
+      {% include 'partials/directory_aside.html' %}
+    </div>
+  </main>
+{% endblock contents %}

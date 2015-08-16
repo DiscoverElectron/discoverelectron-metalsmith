@@ -1,0 +1,31 @@
+<ol class="pagination" role="navigation">
+  {% if current > 0 %}
+    <li class="pagination-page pagination-page--prev">
+      <a class="pagination-link button" href="{{ pages[current - 1].link }}">
+        Prev
+        <span class="sr-only">page</span>
+      </a>
+    </li>
+  {% endif %}
+
+  {% for page in pages %}
+    {% set isCurrent = loop.index - 1 === current %}
+    <li class="pagination-page pagination-page{% if isCurrent %}--current{% endif %}">
+      {% if not isCurrent %}<a class="pagination-link button" href="{{ page.link }}">{% endif %}
+      {% if isCurrent %}<span class="pagination-link button">{% endif %}
+        <span class="sr-only">Page</span>
+        {{ loop.index }}
+      {% if isCurrent %}</span>{% endif %}
+      {% if not isCurrent %}</a>{% endif %}
+    </li>
+  {% endfor %}
+
+  {% if current < pages.length - 1 %}
+    <li class="pagination-page pagination-page--next">
+      <a class="pagination-link button" href="{{ pages[current + 1].link }}">
+        Next
+        <span class="sr-only">page</span>
+      </a>
+    </li>
+  {% endif %}
+</ol>

@@ -1,0 +1,113 @@
+@import "_scaffolding.css";
+@import "_settings.css";
+@import "_colors.css";
+
+/*
+ * Errors
+ * -------------------------------------------------- */
+
+:root {
+  --max-width: 40rem;
+}
+
+
+/* Base
+ * ------------------------- */
+
+body {
+  padding: var(--horizontal-gap);
+  color: var(--text-color);
+  background-color: var(--body-background);
+}
+
+a {
+  color: var(--link-color);
+  transition-timing-function: var(--transition-function);
+  transition-duration: var(--transition-duration);
+  transition-property: color;
+}
+a:hover,
+a:focus {
+  color: var(--link-hover-color);
+}
+
+button,
+input,
+select,
+textarea {
+  color: var(--highlight-color);
+  background-color: transparent;
+  border-color: var(--highlight-color);
+  transition-timing-function: var(--transition-function);
+  transition-duration: var(--transition-duration);
+  transition-property: box-shadow;
+}
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 calc(var(--border-width) * 4) var(--highlight-color);
+}
+
+button,
+input[type="submit"] {
+  color: var(--highlight-background);
+  background-color: var(--highlight-color);
+  border-bottom-color: color(var(--highlight-color) l(-10%));
+}
+
+:focus {
+  outline: color(var(--highlight-color) l(+10%)) auto var(--border-width);
+}
+
+::placeholder {
+  color: inherit;
+  text-overflow: ellipsis !important;
+  opacity: 1;
+}
+:focus::placeholder {
+  opacity: 0;
+}
+
+
+/* Dialog
+ * ------------------------- */
+
+.dialog {
+  max-width: var(--max-width);
+  padding: var(--vertical-gap);
+  margin: 0 auto;
+  background-color: var(--highlight-background);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius-large);
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: var(--line-height-computed);
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-flow: column;
+}
+input {
+  flex: 1;
+}
+input[type="submit"] {
+  flex: 1;
+}
+@media (--screen-sm) {
+  form {
+    flex-flow: row;
+  }
+  input {
+    flex: 2;
+  }
+  input[type="submit"] {
+    flex: 1;
+    margin-left: var(--horizontal-gap);
+  }
+}

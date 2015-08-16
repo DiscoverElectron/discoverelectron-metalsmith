@@ -1,0 +1,319 @@
+@import "_settings.css";
+@import "_colors.css";
+
+/*
+ * Theme
+ * -------------------------------------------------- */
+
+
+/* Base
+ * ------------------------- */
+
+body {
+  color: var(--text-color);
+  background-color: var(--body-background);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--head-color);
+}
+
+a {
+  color: var(--link-color);
+  transition-timing-function: var(--transition-function);
+  transition-duration: var(--transition-duration);
+  transition-property: color;
+}
+a:hover,
+a:focus {
+  color: var(--link-hover-color);
+}
+
+a abbr[title],
+a acronym[title],
+a dfn[title] {
+  transition-timing-function: var(--transition-function);
+  transition-duration: var(--transition-duration);
+  transition-property: color;
+}
+
+blockquote {
+  border-color: var(--muted-color);
+}
+
+hr {
+  color: var(--border-color);
+}
+
+thead {
+  color: var(--highlight-color);
+}
+tbody tr:nth-child(2n+1) {
+  background-color: var(--muted-color);
+}
+
+canvas,
+figure,
+img,
+kbd,
+pre,
+thead,
+tfoot,
+label,
+button,
+input,
+select,
+textarea,
+.overflow {
+  color: var(--highlight-color);
+  border-color: var(--highlight-color);
+}
+
+canvas.highlighted,
+figure.highlighted,
+img.highlighted {
+  background-color: color(var(--highlight-background) s(-30%) l(-15%));
+  box-shadow: 0 0 calc(var(--horizontal-gap) / 2) color(var(--shadow-color) a(35%));
+}
+
+code,
+kbd,
+pre,
+samp {
+  background-color: var(--muted-color);
+}
+
+input,
+select,
+textarea {
+  background-color: transparent;
+  transition-timing-function: var(--transition-function);
+  transition-duration: var(--transition-duration);
+  transition-property: box-shadow;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 calc(var(--horizontal-gap) / 2) var(--highlight-color);
+}
+
+button,
+a.button {
+  color: var(--highlight-background);
+  background-color: var(--highlight-color);
+  border-color: var(--highlight-color);
+  border-bottom-color: color(var(--highlight-color) l(-10%));
+}
+button.button--primary,
+a.button--primary {
+  color: var(--white);
+  background-color: var(--action-color);
+  border-color: var(--action-color);
+  border-bottom-color: color(var(--action-color) l(-10%));
+}
+button[disabled],
+span.button {
+  color: var(--white);
+  background-color: var(--disabled-color);
+  border-color: var(--disabled-color);
+  border-bottom-color: color(var(--disabled-color) l(-10%));
+}
+
+:focus {
+  outline: color(var(--highlight-color) l(+10%)) auto var(--border-width);
+}
+
+::placeholder {
+  color: inherit;
+  text-overflow: ellipsis !important;
+  opacity: 1;
+}
+:focus::placeholder {
+  opacity: 0;
+}
+
+mark,
+::selection {
+  color: var(--white);
+  background-color: var(--highlight-color);
+}
+
+
+/* Highlight
+ * ------------------------- */
+
+.hljs-comment,
+.hljs-javadoc {
+  opacity: .5;
+}
+.hljs-cdata,
+.hljs-doctype,
+.hljs-keyword,
+.hljs-pi,
+.hljs-pragma,
+.hljs-preprocessor,
+.hljs-request,
+.hljs-shebang,
+.hljs-status,
+.hljs-subst {
+  font-weight: var(--font-weight-code-bold);
+}
+.hljs-string,
+.hljs-number,
+.hljs-hexcolor {
+  font-weight: var(--font-weight-code-bold);
+  opacity: .75;
+}
+
+
+/* Header and footer
+ * ------------------------- */
+
+.header,
+.footer {
+  color: var(--text-alt-color);
+  background-color: var(--body-alt-background);
+}
+
+.header {
+  background-color: color(var(--body-alt-background) a(50%) l(+5%));
+}
+
+.header a,
+.footer a {
+  color: var(--link-alt-color);
+}
+.header a:hover,
+.header a:focus,
+.footer a:hover,
+.footer a:focus {
+  color: var(--link-alt-hover-color);
+}
+
+.footer p {
+  border-color: color(var(--white) alpha(25%));
+}
+
+
+/* Landing
+ * ------------------------- */
+
+.landing section:nth-child(odd) {
+  background-color: var(--muted-color);
+}
+
+.landing #intro {
+  background: var(--highlight-color) url('/assets/images/background.jpg') no-repeat;
+}
+
+
+/* Directory and document
+ * ------------------------- */
+
+.directory,
+.document {
+  border-top-color: var(--body-alt-background);
+}
+
+
+/* Directory
+ * ------------------------- */
+
+.records-link,
+.records-link:hover,
+.records-link:focus {
+  color: var(--text-color);
+}
+
+.records-title,
+.records-excerpt::after {
+  transition-timing-function: var(--transition-function);
+  transition-duration: var(--transition-duration);
+  transition-property: color;
+}
+
+.records-excerpt::after {
+  color: var(--link-color);
+  background-image: linear-gradient(to left, var(--white) 75%, color(var(--white) alpha(0%)));
+}
+
+.records-link:hover .records-title {
+  color: var(--link-color);
+}
+.records-link:hover .records-excerpt::after {
+  color: var(--link-hover-color);
+}
+
+
+/* Document
+ * ------------------------- */
+
+.document-image {
+  border-color: var(--border-alt-color);
+}
+
+.document-footer {
+  font-style: italic;
+}
+
+.document-aside {
+  color: var(--highlight-color);
+  background-color: var(--highlight-background);
+}
+
+
+/* Hero
+ * ------------------------- */
+
+.hero {
+  color: var(--white);
+  text-shadow: 0 0 calc(var(--border-width) * 6) var(--shadow-color);
+}
+.hero h1 {
+  color: var(--white);
+}
+.hero a {
+  text-shadow: none;
+}
+
+
+/* Split
+ * ------------------------- */
+
+.split--packages > ul > li,
+.split--packages > ol > li {
+  z-index: 2;
+  box-shadow: 0 0 calc(var(--horizontal-gap) / 2) color(var(--shadow-color) a(35%));
+}
+.split--packages > ul > li:first-child,
+.split--packages > ol > li:first-child,
+.split--packages > ul > li:last-child,
+.split--packages > ol > li:last-child {
+  z-index: 1;
+}
+.split--packages > ul > li > strong,
+.split--packages > ol > li > strong {
+  color: var(--highlight-background);
+  background-color: var(--highlight-color);
+}
+.split--packages > ul > li > ul,
+.split--packages > ul > li > ol,
+.split--packages > ol > li > ul,
+.split--packages > ol > li > ol {
+  background-color: var(--body-background);
+}
+
+
+/* Asides
+ * ------------------------- */
+
+.aside-newsletter {
+  color: var(--highlight-color);
+  background-color: var(--highlight-background);
+}

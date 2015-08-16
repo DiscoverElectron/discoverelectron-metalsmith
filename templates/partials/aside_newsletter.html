@@ -1,0 +1,21 @@
+<section class="aside-newsletter">
+
+  <h2 class="newsletter-title">
+    Weekly Updates
+  </h2>
+
+  <form class="form--compact" action="{{ mailchimp.url }}" method="post" novalidate="novalidate" target="_blank">
+    <p>
+      Get weekly updates on the <strong>book</strong>, the <strong>blog</strong>, and the <strong>Electron community</strong> in general.
+    </p>
+
+    <div>
+      <label for="EMAIL" class="sr-only">Email:</label>
+      <input type="email" value="" placeholder="Enter your email address..." name="EMAIL" id="EMAIL" />
+      <input type="hidden" value="{{ link }}" name="ORIGIN" id="ORIGIN" />
+      <input type="hidden" value="aside_excerpt" name="TYPE" id="TYPE" />
+      <button type="submit">Join the newsletter</button>
+    </div>
+  </form>
+
+</section>

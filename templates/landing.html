@@ -1,0 +1,15 @@
+{% extends 'application.html' %}
+
+{% block contents %}
+  <main class="landing">
+    <article>
+      {{ contents | safe }}
+    </article>
+  </main>
+{% endblock contents %}
+
+{% block scripts %}
+  {% if extensions.indexOf('Gumroad') >= 0 %}
+    {% include 'partials/script_gumroad.html' %}
+  {% endif %}
+{% endblock scripts %}

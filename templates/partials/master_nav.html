@@ -1,0 +1,22 @@
+{% macro item(link, text, scrollable) %}
+  <li class="nav-item">
+    <a class="nav-link" href="{{ link }}" {% if scrollable%}data-scroll{% endif %}>
+      {{ text }}
+    </a>
+  </li>
+{% endmacro %}
+
+<ul class="nav-menu">
+  {% if link == '/index.html' %}
+    {{ item('/#packages', 'Buy the Book', true) }}
+  {% else %}
+    {{ item('/', 'Buy the Book',  false) }}
+  {% endif %}
+
+  {{ item('/blog/', 'Read the Blog', false) }}
+
+  {% if full %}
+    {{ item('/feed.atom', 'Subscribe', false) }}
+    {{ item('#top', 'Back to Top', true) }}
+  {% endif %}
+</ul>

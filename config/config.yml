@@ -1,0 +1,263 @@
+defaults: &defaults
+  source: "./source/"
+  destination: "./build/"
+
+  metadata: &metadata
+    global:
+      url: "https://www.discoverelectron.com"
+      email: "daniel@discoverelectron.com"
+      twitter: "LearnElectron"
+      github: "DiscoverElectron"
+      title: "Discover Electron"
+      subtitle: "Learn how to build cross-platform desktop apps with web technologies today"
+      author: "Daniel Perez Alvarez"
+
+    gumroad:
+      url: "//gumroad.com/js/gumroad.js"
+
+    mailchimp:
+      url: "//discoverelectron.us8.list-manage.com/subscribe/post?u=29536dd9e001b429cf76b4a02&amp;id=5de83df1c8"
+
+    fixurl:
+      url: "//linkhelp.clients.google.com/tbproxy/lh/wm/fixurl.js"
+
+    tagman:
+      url_nojs: "//www.googletagmanager.com/ns.html"
+      url_js: "//www.googletagmanager.com/gtm.js"
+      id: "GTM-KWTRGN"
+
+    webfonts:
+      url: "//ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"
+      config:
+        google:
+          families:
+            - "Dosis:300,400"
+            - "Source Sans Pro:300,400,300italic,400italic"
+            - "Source Code Pro:300,500"
+
+  plugins: &plugins
+
+    ignore:
+      patterns:
+        - "**/_*"
+        - "contents/**/.*"
+        - "contents/LICENSE"
+        - "contents/README.md"
+
+    path:
+      pattern: "contents/+(blog|contact|styleguide)/**"
+
+    extend:
+      landing:
+        pattern: "contents/index.md"
+        attributes:
+          template: "landing.html"
+          extensions: []
+      blog:
+        pattern: "contents/blog/**/index.md"
+        attributes:
+          template: "document.html"
+          extensions: []
+          date:
+            attribute: "path"
+            from: "^contents/(?:blog)/(\\d{4}-\\d{2}-\\d{2})-.+$"
+            to: "$1"
+      apps:
+        pattern: "contents/apps/**/index.md"
+        attributes:
+          template: "landing.html"
+          extensions: []
+      contact:
+        pattern: "contents/contact/**/index.md"
+        attributes:
+          template: "document.html"
+          extensions: []
+      styleguide:
+        pattern: "contents/styleguide/**/index.md"
+        attributes:
+          template: "document.html"
+          extensions: []
+      errors:
+        pattern: "errors/*.md"
+        attributes:
+          template: "error.html"
+          extensions: []
+      htaccess:
+        pattern: ".htaccess"
+        attributes:
+          template: "htaccess.txt"
+
+    collections:
+      documents:
+        pattern: "contents/blog/**/index.md"
+        sortBy: "date"
+        reverse: true
+
+    directories:
+      blog:
+        path: "contents/blog/index.html"
+        template: "records.html"
+        collection: "documents"
+        contents: ""
+        paginate: 5
+      atom:
+        path: "contents/feed.atom"
+        template: "feed.atom"
+        collection: "documents"
+        contents: ""
+        max: 5
+      tile:
+        path: "contents/feed.tile"
+        template: "feed.tile"
+        collection: "documents"
+        contents: ""
+        max: 3
+
+    tags:
+      index:
+        path: "contents/blog/categories/index.html"
+        template: "tags.html"
+        collection: "documents"
+        title: "Categories"
+        contents: ""
+      individual:
+        path: "contents/blog/categories/$1/index.html"
+        template: "records.html"
+        title: "$1"
+        contents: ""
+        paginate: 5
+
+    paginate:
+      pattern: "**/index.html"
+
+    markdown:
+      pattern: "**/*.md"
+      preset: "default"
+      html: true
+      xhtmlOut: true
+      linkify: true
+      typographer: true
+
+    excerpt:
+      pattern: "contents/blog/**/index.html"
+      selector: "p"
+      start: 0
+      end: 2
+
+    link:
+      blog:
+        pattern: ["contents/blog/**", "!contents/blog/categories/**"]
+        from: "^contents(/(?:blog)/)(\\d+/)?(?:(?:\\d{4}-\\d{2}-\\d{2})-([^/]+/))?(?:index\\.html|((?:[^.]+)\\.(?:.+)))$"
+        to: "$1$2$3$4"
+      sections:
+        pattern: ["contents/+(apps|contact|styleguide)/**", "contents/blog/categories/**"]
+        from: "^contents(/(?:(?:[^/]+)/)+)(?:index\\.html|((?:[^.]+)\\.(?:.+)))$"
+        to: "$1$2"
+      misc:
+        pattern: "contents/*.*"
+        from: "^contents(/.+)$"
+        to: "$1"
+
+    date:
+      pattern: "contents/feed.*"
+
+    template:
+      pattern: "**"
+      directory: "templates"
+      engine: "swig"
+
+    browserify:
+      pattern: ["**/*.js", "!**/vendor/**"]
+      transform:
+        - ["babelify", {"ignore": ["/lib/", "/vendor/"]}]
+
+    postcss:
+      pattern: "**/*.css"
+      import:
+        path:
+          - "source/assets/stylesheets"
+          - "node_modules"
+
+    minify:
+      pattern: "**/*.+(css|html|js)"
+
+    move:
+      pattern: "**"
+
+  sync: &sync
+    source: "./build/"
+    options:
+      - "--archive"
+      - "--compress"
+      - "--delete"
+      - "--verbose"
+
+  debug:
+    - "build"
+    - "sync"
+    - "glyphs"
+    - "icons"
+    - "serve"
+    - "watch"
+
+# BUILD ---------------------------------------------------------------#
+
+build:
+  <<: *defaults
+
+# SERVE ---------------------------------------------------------------#
+
+serve:
+  <<: *defaults
+
+  plugins:
+    <<: *plugins
+
+    minify:
+      pattern: "**/*.none"
+
+    serve:
+      online: false
+      port: 8000
+
+# WATCH ---------------------------------------------------------------#
+
+watch:
+  <<: *defaults
+
+  plugins:
+    <<: *plugins
+
+    minify:
+      pattern: "**/*.none"
+
+    watch:
+      source: "."
+      pattern: ["source/**", "templates/**"]
+      delay: 500
+
+    serve:
+      online: false
+      port: 8000
+
+# SYNC DEVELOPMENT ----------------------------------------------------#
+
+sync:
+  <<: *defaults
+
+  sync:
+    <<: *sync
+    destination: "discoverelectron:/home/discoverelectron/dev.discoverelectron.com/"
+
+# SYNC PRODUCTION -----------------------------------------------------#
+
+sync-prod:
+  <<: *defaults
+
+  metadata:
+    <<: *metadata
+    secure: true
+
+  sync:
+    <<: *sync
+    destination: "discoverelectron:/home/discoverelectron/discoverelectron.com/"
